@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContcatForm/contactform';
 import { ContactList } from './ContactList/contactlist';
 import { Filter } from './Filter/filter';
+import { Container } from '@mui/material';
+import css from './app.module.css';
 
 class App extends Component {
   state = {
@@ -58,10 +60,12 @@ class App extends Component {
     const { filter, contacts } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <h1 className={css.wrap}>Phonebook</h1>
+
         <ContactForm onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2 className={css.wrap}>Contacts</h2>
+
         {contacts.length > 1 && (
           <Filter value={filter} onChange={this.filterChange} />
         )}
@@ -73,7 +77,7 @@ class App extends Component {
         ) : (
           <p>Your phonebook is empty. Please add contact.</p>
         )}
-      </div>
+      </Container>
     );
   }
 }

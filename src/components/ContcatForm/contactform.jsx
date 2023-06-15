@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import css from './contactform.module.css';
+import { Button, TextField } from '@mui/material';
 
 class ContactForm extends Component {
   state = {
@@ -21,36 +22,37 @@ class ContactForm extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handlSubmit}>
-        <label className={css.label}>
-          Name
-          <input
-            className={css.input}
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handlChange}
-            pattern="^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
-            title="Ivan Ivanov"
-            required
-          />
-        </label>
-        <label className={css.label}>
-          Telephone
-          <input
-            className={css.input}
-            type="tel"
-            name="number"
-            value={this.state.number}
-            onChange={this.handlChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="555-55-55"
-            required
-          />
-        </label>
-        <button className={css.btn} type="submite">
+      <form onSubmit={this.handlSubmit} className={css.form}>
+        <TextField
+          id="standard-search"
+          label="Name field"
+          type="text"
+          name="name"
+          value={this.state.name}
+          onChange={this.handlChange}
+          pattern="^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
+          required
+          className={css.input}
+        />
+        <TextField
+          type="tel"
+          label="Number field"
+          name="number"
+          value={this.state.number}
+          onChange={this.handlChange}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="555-55-55"
+          required
+          className={css.input}
+        />
+        <Button
+          type="submite"
+          variant="contained"
+          size="small"
+          className={css.btn}
+        >
           Add contact
-        </button>
+        </Button>
       </form>
     );
   }
